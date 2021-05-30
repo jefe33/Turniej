@@ -43,8 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Czlowiek.cs" />
+    <Compile Include="Druzyna.cs" />
+    <Compile Include="Plik.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rozgrywka.cs" />
+    <Compile Include="RozgrywkaSiatkowki.cs" />
+    <Compile Include="Sedzia.cs" />
+    <Compile Include="Sedziowie.cs" />
+    <Compile Include="Turniej.cs" />
+    <Compile Include="Zawodnik.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
