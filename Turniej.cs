@@ -81,7 +81,8 @@ namespace Projekt
         }
         public void GenerujPolFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
-            if(nazwaSportu.ToLower() == "2ognie")
+            //Posortowanie (tak albo uzywajac opcjonalnej metody na sortowanie, ktora jest zakomentarzowana nizej)
+            if (nazwaSportu.ToLower() == "2ognie")
                 listaDruzyn.Sort(CompareDruzynyByWynik2ognie);
             else if (nazwaSportu.ToLower() == "przeciaganie liny")
                 listaDruzyn.Sort(CompareDruzynyByWynikPrzeciaganieLiny);
@@ -104,7 +105,7 @@ namespace Projekt
                 else if (nazwaSportu.ToLower() == "siatkowka")
                     listaDruzyn[i].WynikSiatkowka = 0;
             }
-            //Tworzenie meczy finalowych
+            //Tworzenie meczy polfinalowych
             if (nazwaSportu.ToLower() != "siatkowka")
             {
                 DodajRozgrywke(listaDruzyn[0], listaDruzyn[3], dostepniSedziowie.WybierzLosowegoSedziego(), rand.Next(2));
@@ -118,6 +119,7 @@ namespace Projekt
         }
         public void GenerujFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
+            //Posortowanie (tak albo uzywajac opcjonalnej metody na sortowanie, ktora jest zakomentarzowana nizej)
             if (nazwaSportu.ToLower() == "2ognie")
                 listaDruzyn.Sort(CompareDruzynyByWynik2ognie);
             else if (nazwaSportu.ToLower() == "przeciaganie liny")
@@ -168,6 +170,7 @@ namespace Projekt
                 listaDruzyn.Sort(CompareDruzynyByWynikSiatkowka);
         }*/
 
+        //Ponizsze metody sa potrzebne do sortowania bo metoda Sort() przyjmuje jako parametr metode porownujaca dwa obiekty
         private static int CompareDruzynyByWynik2ognie(Druzyna druzynaA, Druzyna druzynaB)
         {
             if (druzynaA == null)
