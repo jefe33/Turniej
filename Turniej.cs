@@ -26,7 +26,7 @@ namespace Projekt
                 napis += d.NazwaDruzyny+"\n";
             napis += "\nLista Rozgrywek:\n";
             foreach (Rozgrywka r in listaRozgrywek)
-                napis += r.ToString()+"\n\n";
+                napis += r+"\n\n"; //napis += r.ToString()+"\n\n";
             return napis;
         }
         public void DodajDruzyne(Druzyna nowaDruzyna) 
@@ -81,30 +81,15 @@ namespace Projekt
         }
         public void GenerujPolFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
-            //Posortowanie (tak albo uzywajac opcjonalnej metody na sortowanie, ktora jest zakomentarzowana nizej)
-            if (nazwaSportu.ToLower() == "2ognie")
-                listaDruzyn.Sort(CompareDruzynyByWynik2ognie);
-            else if (nazwaSportu.ToLower() == "przeciaganie liny")
-                listaDruzyn.Sort(CompareDruzynyByWynikPrzeciaganieLiny);
-            else if (nazwaSportu.ToLower() == "siatkowka")
-                listaDruzyn.Sort(CompareDruzynyByWynikSiatkowka);
-
+            SortujListeDruzyn();
             var rand = new Random();
             //Wyjatek sprawdzajacy czy sa przynajmniej 4 druzyny na liscie
-            while (listaDruzyn.Count > 4) //wersja uproszczona usuwajaca druzyny z konca rankingu (brak dogrywek jesli druzyny mialy tyle samo punktow)
+            while (listaDruzyn.Count > 4) //wersja mocno uproszczona usuwajaca druzyny z konca rankingu (brak dogrywek jesli druzyny mialy tyle samo punktow na np. 4 i 5 miejscu)
             {
                 listaDruzyn.Remove(listaDruzyn[listaDruzyn.Count-1]);
             }
             //Wyzerowanie wynikow druzyn finalowej czworki
-            for (int i=0; i < 4; i++)
-            {
-                if (nazwaSportu.ToLower() == "2ognie")
-                    listaDruzyn[i].Wynik2Ognie = 0;
-                else if (nazwaSportu.ToLower() == "przeciaganie liny")
-                    listaDruzyn[i].WynikPrzeciaganieLiny = 0;
-                else if (nazwaSportu.ToLower() == "siatkowka")
-                    listaDruzyn[i].WynikSiatkowka = 0;
-            }
+            WyzerowanieWynikowDruzyn();
             //Tworzenie meczy polfinalowych
             if (nazwaSportu.ToLower() != "siatkowka")
             {
@@ -119,17 +104,10 @@ namespace Projekt
         }
         public void GenerujFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
-            //Posortowanie (tak albo uzywajac opcjonalnej metody na sortowanie, ktora jest zakomentarzowana nizej)
-            if (nazwaSportu.ToLower() == "2ognie")
-                listaDruzyn.Sort(CompareDruzynyByWynik2ognie);
-            else if (nazwaSportu.ToLower() == "przeciaganie liny")
-                listaDruzyn.Sort(CompareDruzynyByWynikPrzeciaganieLiny);
-            else if (nazwaSportu.ToLower() == "siatkowka")
-                listaDruzyn.Sort(CompareDruzynyByWynikSiatkowka);
-
+            SortujListeDruzyn();
             while (listaDruzyn.Count > 2)
                 listaDruzyn.Remove(listaDruzyn[listaDruzyn.Count - 1]);
-            //Final zwyciezca bedzie mial 2 wygrane (z polfinalu i finalu), a przegrany tylko 1 z polfinalu
+            WyzerowanieWynikowDruzyn();
             var rand = new Random();
             if (nazwaSportu.ToLower() != "siatkowka")
                 DodajRozgrywke(listaDruzyn[0], listaDruzyn[1], dostepniSedziowie.WybierzLosowegoSedziego(), rand.Next(2));
@@ -138,29 +116,22 @@ namespace Projekt
         }
         public string TabelaWynikow() //Zmiana wzgledem diagramu UML usunalem parametr, bo nie jest portrzebny
         { //Tabela wynikow pokazuje aktualna ilosc wygranych druzyn, poniewaz ilosc wygranych sie zeruje w polfinale, bedzie trzeba w interfejsie robic jej kopie albo cos
+            SortujListeDruzyn();
             string napis = $"Sport: {nazwaSportu}\nNazwa Druzyny:               wynik:\n";
-            if (nazwaSportu.ToLower() == "2ognie")
+            foreach (Druzyna d in listaDruzyn)
             {
-                listaDruzyn.Sort(CompareDruzynyByWynik2ognie);
-                foreach (Druzyna d in listaDruzyn)
-                    napis += $"{d.NazwaDruzyny,-30} {d.Wynik2Ognie}\n";
-            }
-            if (nazwaSportu.ToLower() == "przeciaganie liny")
-            {
-                listaDruzyn.Sort(CompareDruzynyByWynikPrzeciaganieLiny);
-                foreach (Druzyna d in listaDruzyn)
-                    napis += $"{d.NazwaDruzyny,-30} {d.WynikPrzeciaganieLiny}\n";
-            }
-            if (nazwaSportu.ToLower() == "siatkowka")
-            {
-                listaDruzyn.Sort(CompareDruzynyByWynikSiatkowka);
-                foreach (Druzyna d in listaDruzyn)
-                    napis += $"{d.NazwaDruzyny,-30} {d.WynikSiatkowka}\n";
+                napis += $"{d.NazwaDruzyny,-30} ";
+                if (nazwaSportu.ToLower() == "2ognie")
+                    napis += $"{d.Wynik2Ognie}\n";
+                if (nazwaSportu.ToLower() == "przeciaganie liny")
+                    napis += $"{d.WynikPrzeciaganieLiny}\n";
+                if (nazwaSportu.ToLower() == "siatkowka")
+                    napis += $"{d.WynikSiatkowka}\n";
             }
             return napis;
         }
-        //Opcjonalana dodatkowa metoda na sortowanie, poniewaz czesto sie powtarza ten kod w GenerujPolFinal, GenerujFinal i TabelaWynikow
-        /*public void SortujListeDruzyn()
+        
+        private void SortujListeDruzyn()
         {
             if (nazwaSportu.ToLower() == "2ognie")
                 listaDruzyn.Sort(CompareDruzynyByWynik2ognie);
@@ -168,7 +139,20 @@ namespace Projekt
                 listaDruzyn.Sort(CompareDruzynyByWynikPrzeciaganieLiny);
             else if (nazwaSportu.ToLower() == "siatkowka")
                 listaDruzyn.Sort(CompareDruzynyByWynikSiatkowka);
-        }*/
+        }
+
+        private void WyzerowanieWynikowDruzyn()
+        {
+            for (int i = 0; i < listaDruzyn.Count; i++)
+            {
+                if (nazwaSportu.ToLower() == "2ognie")
+                    listaDruzyn[i].Wynik2Ognie = 0;
+                else if (nazwaSportu.ToLower() == "przeciaganie liny")
+                    listaDruzyn[i].WynikPrzeciaganieLiny = 0;
+                else if (nazwaSportu.ToLower() == "siatkowka")
+                    listaDruzyn[i].WynikSiatkowka = 0;
+            }
+        }
 
         //Ponizsze metody sa potrzebne do sortowania bo metoda Sort() przyjmuje jako parametr metode porownujaca dwa obiekty
         private static int CompareDruzynyByWynik2ognie(Druzyna druzynaA, Druzyna druzynaB)

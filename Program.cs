@@ -66,6 +66,11 @@ namespace Projekt
             d4.DodajZawodnika(z19);
             d4.DodajZawodnika(z20);
 
+            Console.WriteLine(d1);
+            Console.WriteLine(d2);
+            Console.WriteLine(d3);
+            Console.WriteLine(d4);
+
             Sedzia s1 = new Sedzia("S1", "G1");
             Sedzia s2 = new Sedzia("P1", "p1");
             Sedzia s3 = new Sedzia("P2", "p2");
@@ -80,7 +85,7 @@ namespace Projekt
             sad1.DodajSedziego(s5);
             sad1.DodajSedziego(s6);
 
-            Turniej t1 = new Turniej("2ognie");
+            Turniej t1 = new Turniej("przeciaganie liny");
             t1.DodajDruzyne(d1);
             t1.DodajDruzyne(d2);
             t1.DodajDruzyne(d3);
@@ -91,14 +96,15 @@ namespace Projekt
             t1.DodajDruzyne(d8);
             t1.UsunDruzyne(d8);
             Console.WriteLine("            " + t1);
+            Console.WriteLine("\nTabela wynikow przed faza grupowa\n"+t1.TabelaWynikow());
             t1.GenerujFazeGrupowa(sad1);
             Console.WriteLine("            " + t1);
             Console.WriteLine("tabela wynikow po fazie grupowej\n" + t1.TabelaWynikow());
-            Console.WriteLine("\n");
+            //Console.WriteLine("\n");
 
             t1.GenerujPolFinal(sad1);
             //Console.WriteLine(t1);
-            Console.WriteLine("\n\n\n\n");
+            //Console.WriteLine("\n\n\n\n");
             Console.WriteLine("tabela wynikow po polfinale\n" + t1.TabelaWynikow());
             t1.GenerujFinal(sad1);
             Console.WriteLine("tabela wynikow po finale\n" + t1.TabelaWynikow());
