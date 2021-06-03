@@ -10,7 +10,6 @@ namespace Projekt
     {
         private List<Sedzia> listaSedziow;
         public Sedziowie() { listaSedziow = new List<Sedzia>(); }
-        //public Sedziowie(string nazwaPliku) { } //Niedokonczony konstruktor
         public override string ToString()
         {
             string napis = "";

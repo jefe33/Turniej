@@ -18,7 +18,6 @@ namespace Projekt
             listaDruzyn = new List<Druzyna>();
             listaRozgrywek = new List<Rozgrywka>();
         }
-        //public Turniej(string nazwaSportu, string nazwaPliku) { } //Niedokonczony konstruktor
         public override string ToString()
         {
             string napis = $"Turniej {nazwaSportu}\nLista Druzyn bioracych aktualnie udzial w turnieju:\n";
