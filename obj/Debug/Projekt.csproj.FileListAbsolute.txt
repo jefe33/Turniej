@@ -5,3 +5,10 @@ C:\Users\Piotrek\Source\Repos\jefe3\Projekt\obj\Debug\Projekt.csprojAssemblyRefe
 C:\Users\Piotrek\Source\Repos\jefe3\Projekt\obj\Debug\Projekt.csproj.CoreCompileInputs.cache
 C:\Users\Piotrek\Source\Repos\jefe3\Projekt\obj\Debug\Projekt.exe
 C:\Users\Piotrek\Source\Repos\jefe3\Projekt\obj\Debug\Projekt.pdb
+C:\Users\kacpe\Source\Repos\Projekt\bin\Debug\Projekt.exe.config
+C:\Users\kacpe\Source\Repos\Projekt\bin\Debug\Projekt.exe
+C:\Users\kacpe\Source\Repos\Projekt\bin\Debug\Projekt.pdb
+C:\Users\kacpe\Source\Repos\Projekt\obj\Debug\Projekt.csprojAssemblyReference.cache
+C:\Users\kacpe\Source\Repos\Projekt\obj\Debug\Projekt.csproj.CoreCompileInputs.cache
+C:\Users\kacpe\Source\Repos\Projekt\obj\Debug\Projekt.exe
+C:\Users\kacpe\Source\Repos\Projekt\obj\Debug\Projekt.pdb

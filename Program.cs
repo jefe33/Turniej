@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projekt
 {
@@ -11,8 +7,8 @@ namespace Projekt
         static void Main(string[] args)
         {
             //Kod sprawdzajacy czy dziala klasa turniej (mozna usunac)
-
-            /*Druzyna d1 = new Druzyna("Czarne smoki");
+            /*
+            Druzyna d1 = new Druzyna("Czarne smoki");
             Druzyna d2 = new Druzyna("Zlote orly");
             Druzyna d3 = new Druzyna("Mroczni wyznawcy");
             Druzyna d4 = new Druzyna("Ogniste demony");
@@ -106,10 +102,18 @@ namespace Projekt
             //Console.WriteLine(t1);
             //Console.WriteLine("\n\n\n\n");
             Console.WriteLine("tabela wynikow po polfinale\n" + t1.TabelaWynikow());
+            Plik.Zapisz(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "tpf.bin", t1);
             t1.GenerujFinal(sad1);
             Console.WriteLine("tabela wynikow po finale\n" + t1.TabelaWynikow());
 
-            Console.ReadKey();*/
+            Console.WriteLine("Zapisanie i wczytanie z pliku stanow turnieju:\n");
+            Plik.Zapisz(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "turniej.bin", t1);
+            Turniej tur = Plik.Wczytaj<Turniej>(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "turniej.bin");
+            tur = Plik.Wczytaj<Turniej>(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"tpf.bin");
+            Console.WriteLine("tabela wynikow po polfinale\n" + tur.TabelaWynikow());
+            Console.WriteLine("tabela wynikow po finale\n" + tur.TabelaWynikow());
+            Console.ReadKey();
+            */
         }
     }
 }

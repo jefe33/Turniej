@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projekt
 {
+    [Serializable]
     public class Sedziowie
     {
         private List<Sedzia> listaSedziow;
