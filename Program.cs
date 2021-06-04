@@ -1,4 +1,5 @@
 ﻿using System;
+using Projekt.Exceptions;
 
 namespace Projekt
 {
@@ -97,21 +98,29 @@ namespace Projekt
             Console.WriteLine("            " + t1);
             Console.WriteLine("tabela wynikow po fazie grupowej\n" + t1.TabelaWynikow());
             //Console.WriteLine("\n");
-
-            t1.GenerujPolFinal(sad1);
+            
             //Console.WriteLine(t1);
             //Console.WriteLine("\n\n\n\n");
             Console.WriteLine("tabela wynikow po polfinale\n" + t1.TabelaWynikow());
-            Plik.Zapisz(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "tpf.bin", t1);
+            Plik.Zapisz("tpf.bin", t1);
             t1.GenerujFinal(sad1);
             Console.WriteLine("tabela wynikow po finale\n" + t1.TabelaWynikow());
 
             Console.WriteLine("Zapisanie i wczytanie z pliku stanow turnieju:\n");
-            Plik.Zapisz(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "turniej.bin", t1);
-            Turniej tur = Plik.Wczytaj<Turniej>(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "turniej.bin");
-            tur = Plik.Wczytaj<Turniej>(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"tpf.bin");
+            Turniej tur = Plik.Wczytaj<Turniej>("tpf.bin");
             Console.WriteLine("tabela wynikow po polfinale\n" + tur.TabelaWynikow());
+            Plik.Zapisz("turniej.bin", t1);
+            tur = Plik.Wczytaj<Turniej>("turniej.bin");
             Console.WriteLine("tabela wynikow po finale\n" + tur.TabelaWynikow());
+            try
+            {
+                t1.UsunDruzyne(d8);
+                t1.GenerujPolFinal(sad1);
+            }
+            catch (NotEnoughTeamsException e)
+            {
+                Console.WriteLine(e.Message);
+            }
             Console.ReadKey();
             */
         }

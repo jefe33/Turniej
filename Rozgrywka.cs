@@ -1,4 +1,5 @@
 ﻿using System;
+using Projekt.Exceptions;
 
 namespace Projekt
 {
@@ -14,6 +15,10 @@ namespace Projekt
             this.druzynaA = druzynaA;
             this.druzynaB = druzynaB;
             this.sedziaGlowny = sedziaGlowny;
+            if (wynik != 0 && wynik != 1)
+            {
+                throw new IncorrectScoreException("Nieprawidlowy wynik!!!");
+            }
             this.wynik = wynik; //tu powinien byc wyjatek sprawdzajacy czy wynik = 0 lub wynik = 1
         }
         public override string ToString() 

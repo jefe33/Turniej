@@ -45,6 +45,10 @@
   <ItemGroup>
     <Compile Include="Czlowiek.cs" />
     <Compile Include="Druzyna.cs" />
+    <Compile Include="Exceptions\IncorrectScoreException.cs" />
+    <Compile Include="Exceptions\IncorrectSportNameException.cs" />
+    <Compile Include="Exceptions\NotEnoughTeamsException.cs" />
+    <Compile Include="Exceptions\ProjectException.cs" />
     <Compile Include="Plik.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

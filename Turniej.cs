@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Projekt.Exceptions;
 
 namespace Projekt
 {
@@ -11,6 +12,10 @@ namespace Projekt
         private List<Rozgrywka> listaRozgrywek;
         public Turniej(string nazwaSportu) 
         {
+            if (nazwaSportu != "przeciaganie liny" && nazwaSportu != "2ognie" && nazwaSportu != "siatkowka")
+            {
+                throw new IncorrectSportNameException("Nieprawidlowa nazwa sportu!!!");
+            }
             //Wyjatek sprawdzajacy czy nazwa sportu to siatkowka/2ognie/przeciaganie liny
             this.nazwaSportu = nazwaSportu;
             listaDruzyn = new List<Druzyna>();
@@ -36,6 +41,14 @@ namespace Projekt
         }
         public void DodajRozgrywke(Druzyna druzynaA, Druzyna druzynaB, Sedzia sedziaGlowny, int wynik)
         {
+            if (wynik != 0 && wynik != 1)
+            {
+                throw new IncorrectScoreException("Nieprawidlowy wynik!!!");
+            }
+            if (nazwaSportu != "przeciaganie liny" && nazwaSportu != "2ognie")
+            {
+                throw new IncorrectSportNameException("Nieprawidlowa nazwa sportu!!!");
+            }
             //Wyjatek sprawdzajacy czy nazwa sporu to 2ognie albo przeciaganie liny
             listaRozgrywek.Add(new Rozgrywka(druzynaA, druzynaB, sedziaGlowny, wynik));
             //Wyjatek sprawdzajacy czy wynik jest rowny 0 albo 1
@@ -56,6 +69,14 @@ namespace Projekt
         }
         public void DodajRozgrywkeSiatkowki(Druzyna druzynaA, Druzyna druzynaB, Sedzia sedziaGlowny, Sedzia sedziaPomocniczy1, Sedzia sedziaPomocniczy2, int wynik)
         {
+            if (wynik != 0 && wynik != 1)
+            {
+                throw new IncorrectScoreException("Nieprawidlowy wynik!!!");
+            }
+            if (nazwaSportu != "siatkowka")
+            {
+                throw new IncorrectSportNameException("Nieprawidlowa nazwa sportu!!!");
+            }
             //Wyjatek sprawdzajacy czy nazwa sporu to siatkowka
             listaRozgrywek.Add(new RozgrywkaSiatkowki(druzynaA, druzynaB, sedziaGlowny, sedziaPomocniczy1, sedziaPomocniczy2, wynik));
             //Wyjatek sprawdzajacy czy wynik jest rowny 0 albo 1
@@ -78,6 +99,10 @@ namespace Projekt
         }
         public void GenerujPolFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
+            if (listaDruzyn.Count < 4)
+            {
+                throw new NotEnoughTeamsException("Musza byc przynajmniej 4 druzyny aby wygenerowac polfinal");
+            }
             SortujListeDruzyn();
             var rand = new Random();
             //Wyjatek sprawdzajacy czy sa przynajmniej 4 druzyny na liscie
@@ -101,6 +126,10 @@ namespace Projekt
         }
         public void GenerujFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
+            if (listaDruzyn.Count < 2)
+            {
+                throw new NotEnoughTeamsException("Musza byc przynajmniej 2 druzyny aby wygenerowac final");
+            }
             SortujListeDruzyn();
             while (listaDruzyn.Count > 2)
                 listaDruzyn.Remove(listaDruzyn[listaDruzyn.Count - 1]);
