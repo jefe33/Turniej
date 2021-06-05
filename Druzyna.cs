@@ -8,6 +8,9 @@ namespace Projekt
     {
         public string NazwaDruzyny { get; set; }
         private List<Zawodnik> zawodnicy;
+
+        public List<Zawodnik> Zawodnicy => zawodnicy;
+
         public int WynikSiatkowka { get; set; }
         public int WynikPrzeciaganieLiny { get; set; }
         public int Wynik2Ognie { get; set; }

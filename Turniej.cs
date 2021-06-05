@@ -9,6 +9,9 @@ namespace Projekt
     {
         private string nazwaSportu;
         private List<Druzyna> listaDruzyn;
+
+        public List<Druzyna> ListaDruzyn => listaDruzyn;
+
         private List<Rozgrywka> listaRozgrywek;
         public Turniej(string nazwaSportu) 
         {
@@ -32,7 +35,11 @@ namespace Projekt
             return napis;
         }
         public void DodajDruzyne(Druzyna nowaDruzyna) 
-        { 
+        {
+            if (nowaDruzyna.Zawodnicy.Count != 5)
+            {
+                throw new EmptyTeamException("Druzyna musi zawierac 5 zawodnikow!!!");
+            }
             listaDruzyn.Add(nowaDruzyna); 
         }
         public bool UsunDruzyne(Druzyna druzynaDoUsuniecia)
@@ -41,17 +48,23 @@ namespace Projekt
         }
         public void DodajRozgrywke(Druzyna druzynaA, Druzyna druzynaB, Sedzia sedziaGlowny, int wynik)
         {
+            //Wyjatek sprawdzajacy czy wynik jest rowny 0 albo 1
             if (wynik != 0 && wynik != 1)
             {
                 throw new IncorrectScoreException("Nieprawidlowy wynik!!!");
             }
+            //Wyjatek sprawdzajacy czy nazwa sporu to 2ognie albo przeciaganie liny
             if (nazwaSportu != "przeciaganie liny" && nazwaSportu != "2ognie")
             {
                 throw new IncorrectSportNameException("Nieprawidlowa nazwa sportu!!!");
             }
-            //Wyjatek sprawdzajacy czy nazwa sporu to 2ognie albo przeciaganie liny
+            //Wyjatek sprawdzajacy czy obie druzyny maja 5 zawodnikow
+            if (druzynaA.Zawodnicy.Count != 5 || druzynaB.Zawodnicy.Count != 5)
+            {
+                throw new EmptyTeamException("Druzyna musi zawierac 5 zawodnikow!!!");
+            }
+            
             listaRozgrywek.Add(new Rozgrywka(druzynaA, druzynaB, sedziaGlowny, wynik));
-            //Wyjatek sprawdzajacy czy wynik jest rowny 0 albo 1
             if(nazwaSportu.ToLower() == "2ognie")
             {
                 if (wynik == 1)
@@ -69,17 +82,23 @@ namespace Projekt
         }
         public void DodajRozgrywkeSiatkowki(Druzyna druzynaA, Druzyna druzynaB, Sedzia sedziaGlowny, Sedzia sedziaPomocniczy1, Sedzia sedziaPomocniczy2, int wynik)
         {
+            //Wyjatek sprawdzajacy czy wynik jest rowny 0 albo 1
             if (wynik != 0 && wynik != 1)
             {
                 throw new IncorrectScoreException("Nieprawidlowy wynik!!!");
             }
+            //Wyjatek sprawdzajacy czy nazwa sporu to siatkowka
             if (nazwaSportu != "siatkowka")
             {
                 throw new IncorrectSportNameException("Nieprawidlowa nazwa sportu!!!");
             }
-            //Wyjatek sprawdzajacy czy nazwa sporu to siatkowka
+            //Wyjatek sprawdzajacy czy obie druzyny maja 5 zawodnikow
+            if (druzynaA.Zawodnicy.Count != 5 || druzynaB.Zawodnicy.Count != 5)
+            {
+                throw new EmptyTeamException("Druzyna musi zawierac 5 zawodnikow!!!");
+            }
+            
             listaRozgrywek.Add(new RozgrywkaSiatkowki(druzynaA, druzynaB, sedziaGlowny, sedziaPomocniczy1, sedziaPomocniczy2, wynik));
-            //Wyjatek sprawdzajacy czy wynik jest rowny 0 albo 1
             if (wynik == 1)
                 druzynaA.WynikSiatkowka++;
             else
@@ -87,6 +106,12 @@ namespace Projekt
         }
         public void GenerujFazeGrupowa(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
+            //Wyjatek sprawdzajacy czy sa przynajmniej 3 sedziowie na liscie
+            if (dostepniSedziowie.GetListaSedziow().Count < 3)
+            {
+                throw new NotEnoughRefereesException("Za malo sedziow!!!");
+            }
+            
             var rand = new Random();
             if (nazwaSportu.ToLower() != "siatkowka")
                 for (int i=0; i < listaDruzyn.Count-1; i++)
@@ -99,13 +124,20 @@ namespace Projekt
         }
         public void GenerujPolFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
+            //Wyjatek sprawdzajacy czy sa przynajmniej 4 druzyny na liscie
             if (listaDruzyn.Count < 4)
             {
                 throw new NotEnoughTeamsException("Musza byc przynajmniej 4 druzyny aby wygenerowac polfinal");
             }
+            //Wyjatek sprawdzajacy czy sa przynajmniej 3 sedziowie na liscie
+            if (dostepniSedziowie.GetListaSedziow().Count < 3)
+            {
+                throw new NotEnoughRefereesException("Za malo sedziow!!!");
+            }
+            
             SortujListeDruzyn();
             var rand = new Random();
-            //Wyjatek sprawdzajacy czy sa przynajmniej 4 druzyny na liscie
+            
             while (listaDruzyn.Count > 4) //wersja mocno uproszczona usuwajaca druzyny z konca rankingu (brak dogrywek jesli druzyny mialy tyle samo punktow na np. 4 i 5 miejscu)
             {
                 listaDruzyn.Remove(listaDruzyn[listaDruzyn.Count-1]);
@@ -126,9 +158,15 @@ namespace Projekt
         }
         public void GenerujFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
+            //Wyjatek sprawdzajacy czy sa przynajmniej 2 druzyny na liscie
             if (listaDruzyn.Count < 2)
             {
                 throw new NotEnoughTeamsException("Musza byc przynajmniej 2 druzyny aby wygenerowac final");
+            }
+            //Wyjatek sprawdzajacy czy sa przynajmniej 3 sedziowie na liscie
+            if (dostepniSedziowie.GetListaSedziow().Count < 3)
+            {
+                throw new NotEnoughRefereesException("Za malo sedziow!!!");
             }
             SortujListeDruzyn();
             while (listaDruzyn.Count > 2)
