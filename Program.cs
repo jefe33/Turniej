@@ -63,6 +63,12 @@ namespace Projekt
             d4.DodajZawodnika(z19);
             d4.DodajZawodnika(z20);
 
+            d5.DodajZawodnika(z16);
+            d5.DodajZawodnika(z17);
+            d5.DodajZawodnika(z18);
+            d5.DodajZawodnika(z19);
+            d5.DodajZawodnika(z20);
+
             Console.WriteLine(d1);
             Console.WriteLine(d2);
             Console.WriteLine(d3);
@@ -88,10 +94,7 @@ namespace Projekt
             t1.DodajDruzyne(d3);
             t1.DodajDruzyne(d4);
             t1.DodajDruzyne(d5);
-            t1.DodajDruzyne(d6);
-            t1.DodajDruzyne(d7);
-            t1.DodajDruzyne(d8);
-            t1.UsunDruzyne(d8);
+            t1.UsunDruzyne(d5);
             Console.WriteLine("            " + t1);
             Console.WriteLine("\nTabela wynikow przed faza grupowa\n"+t1.TabelaWynikow());
             t1.GenerujFazeGrupowa(sad1);

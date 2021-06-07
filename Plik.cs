@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Projekt
@@ -9,14 +10,21 @@ namespace Projekt
         public static void Zapisz<T>(string sciezka, T obiektZapis) //Binarna serializacja obiektu
         {
             FileStream stream = null;
+            BinaryFormatter formatter = new BinaryFormatter();
             try
             {
                 stream = File.Create(sciezka);
-                var formatter = new BinaryFormatter();
                 formatter.Serialize(stream, obiektZapis);
-            }catch(Exception e)
+            }
+            catch (SerializationException e)
             {
-                //wypisanie wyjatku czy cos
+                Console.WriteLine("Failed to serialize. Reason: " + e.Message);
+                throw;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
             }
             finally
             {
@@ -26,10 +34,29 @@ namespace Projekt
         }
         public static T Wczytaj<T>(string sciezka)//Binarna deserializacja obiektu
         {
-            var stream = File.OpenRead(sciezka);
-            var formatter = new BinaryFormatter();
-            var obj = (T)formatter.Deserialize(stream);//deserializacja pliku i rzutowanie na obiekt klasy T
-            stream.Close();
+            FileStream stream = null;
+            BinaryFormatter formatter = new BinaryFormatter();
+            T obj;
+            try
+            {
+                stream = new FileStream(sciezka, FileMode.Open);
+                obj = (T)formatter.Deserialize(stream);
+            }
+            catch (SerializationException e)
+            {
+                Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
+                throw;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            finally
+            {
+                if (stream != null)
+                    stream.Close();
+            }
             return obj;
         }
     }
