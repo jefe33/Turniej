@@ -12,6 +12,8 @@ namespace Projekt
 
         public List<Druzyna> ListaDruzyn => listaDruzyn;
 
+        public int faza;
+
         private List<Rozgrywka> listaRozgrywek;
         public Turniej(string nazwaSportu) 
         {
@@ -23,6 +25,7 @@ namespace Projekt
             this.nazwaSportu = nazwaSportu;
             listaDruzyn = new List<Druzyna>();
             listaRozgrywek = new List<Rozgrywka>();
+            faza = 0;
         }
         public override string ToString()
         {

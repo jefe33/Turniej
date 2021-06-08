@@ -37,17 +37,7 @@ namespace Projekt
             Turniej ognie = new Turniej("2ognie");
             Turniej lina = new Turniej("przeciaganie liny");
 
-            int fazaS = 0;
-            int fazaO = 0;
-            int fazaL = 0; 
-
             Sedziowie sed = new Sedziowie();
-            Sedzia s1 = new Sedzia("S1", "G1");
-            Sedzia s2 = new Sedzia("P1", "p1");
-            Sedzia s3 = new Sedzia("p3", "p5");
-            sed.DodajSedziego(s1);
-            sed.DodajSedziego(s2);
-            sed.DodajSedziego(s3);
 
             ConsoleKeyInfo input1;
             int inputINT;
@@ -73,118 +63,142 @@ namespace Projekt
             Sedzia tmpS = new Sedzia("tymczasowy", "sedzia");
             #endregion
 
-            #region druzyny
+            Console.WriteLine("Czy chcesz wczytać stan turnieju? \nY/N");
+            do
+            {
+                input1 = Console.ReadKey();
+            } while (input1.Key != ConsoleKey.Y && input1.Key != ConsoleKey.N);
 
-            Druzyna d1 = new Druzyna("Czarne smoki");
-            Druzyna d2 = new Druzyna("Zlote orly");
-            Druzyna d3 = new Druzyna("Mroczni wyznawcy");
-            Druzyna d4 = new Druzyna("Ogniste demony");
-            Druzyna d5 = new Druzyna("Bohaterscy Herosi");
-            Druzyna d6 = new Druzyna("Bogowie Olimpu");
-            Druzyna d7 = new Druzyna("Apostolowie Smierci");
-            Druzyna d8 = new Druzyna("Wrozki i Kucyki");
+            if (input1.Key == ConsoleKey.Y)
+            {
+                //wczytaj pliki
 
-            Zawodnik z1 = new Zawodnik("A", "B", 1);
-            Zawodnik z2 = new Zawodnik("C", "D", 2);
-            Zawodnik z3 = new Zawodnik("E", "F", 3);
-            Zawodnik z4 = new Zawodnik("G", "H", 4);
-            Zawodnik z5 = new Zawodnik("I", "J", 5);
-            Zawodnik z6 = new Zawodnik("K", "L", 6);
-            Zawodnik z7 = new Zawodnik("M", "N", 7);
-            Zawodnik z8 = new Zawodnik("O", "P", 8);
-            Zawodnik z9 = new Zawodnik("Q", "R", 9);
-            Zawodnik z10 = new Zawodnik("S", "T", 10);
-            Zawodnik z11 = new Zawodnik("U", "W", 11);
-            Zawodnik z12 = new Zawodnik("V", "X", 12);
-            Zawodnik z13 = new Zawodnik("Y", "Z", 13);
-            Zawodnik z14 = new Zawodnik("AA", "BB", 14);
-            Zawodnik z15 = new Zawodnik("CC", "DD", 15);
-            Zawodnik z16 = new Zawodnik("EE", "FF", 16);
-            Zawodnik z17 = new Zawodnik("GG", "HH", 17);
-            Zawodnik z18 = new Zawodnik("II", "JJ", 18);
-            Zawodnik z19 = new Zawodnik("KK", "LL", 19);
-            Zawodnik z20 = new Zawodnik("MM", "NN", 20);
+            }
+            else
+            {
+                #region dodawnie sedziow
+                Sedzia s1 = new Sedzia("S1", "G1");
+                Sedzia s2 = new Sedzia("P1", "p1");
+                Sedzia s3 = new Sedzia("p3", "p5");
+                sed.DodajSedziego(s1);
+                sed.DodajSedziego(s2);
+                sed.DodajSedziego(s3);
 
-            d1.DodajZawodnika(z1);
-            d1.DodajZawodnika(z2);
-            d1.DodajZawodnika(z3);
-            d1.DodajZawodnika(z4);
-            d1.DodajZawodnika(z5);
+                #endregion
 
-            d2.DodajZawodnika(z6);
-            d2.DodajZawodnika(z7);
-            d2.DodajZawodnika(z8);
-            d2.DodajZawodnika(z9);
-            d2.DodajZawodnika(z10);
+                #region druzyny
 
-            d3.DodajZawodnika(z11);
-            d3.DodajZawodnika(z12);
-            d3.DodajZawodnika(z13);
-            d3.DodajZawodnika(z14);
-            d3.DodajZawodnika(z15);
+                Druzyna d1 = new Druzyna("Czarne smoki");
+                Druzyna d2 = new Druzyna("Zlote orly");
+                Druzyna d3 = new Druzyna("Mroczni wyznawcy");
+                Druzyna d4 = new Druzyna("Ogniste demony");
+                Druzyna d5 = new Druzyna("Bohaterscy Herosi");
+                Druzyna d6 = new Druzyna("Bogowie Olimpu");
+                Druzyna d7 = new Druzyna("Apostolowie Smierci");
+                Druzyna d8 = new Druzyna("Wrozki i Kucyki");
 
-            d4.DodajZawodnika(z16);
-            d4.DodajZawodnika(z17);
-            d4.DodajZawodnika(z18);
-            d4.DodajZawodnika(z19);
-            d4.DodajZawodnika(z20);
+                Zawodnik z1 = new Zawodnik("A", "B", 1);
+                Zawodnik z2 = new Zawodnik("C", "D", 2);
+                Zawodnik z3 = new Zawodnik("E", "F", 3);
+                Zawodnik z4 = new Zawodnik("G", "H", 4);
+                Zawodnik z5 = new Zawodnik("I", "J", 5);
+                Zawodnik z6 = new Zawodnik("K", "L", 6);
+                Zawodnik z7 = new Zawodnik("M", "N", 7);
+                Zawodnik z8 = new Zawodnik("O", "P", 8);
+                Zawodnik z9 = new Zawodnik("Q", "R", 9);
+                Zawodnik z10 = new Zawodnik("S", "T", 10);
+                Zawodnik z11 = new Zawodnik("U", "W", 11);
+                Zawodnik z12 = new Zawodnik("V", "X", 12);
+                Zawodnik z13 = new Zawodnik("Y", "Z", 13);
+                Zawodnik z14 = new Zawodnik("AA", "BB", 14);
+                Zawodnik z15 = new Zawodnik("CC", "DD", 15);
+                Zawodnik z16 = new Zawodnik("EE", "FF", 16);
+                Zawodnik z17 = new Zawodnik("GG", "HH", 17);
+                Zawodnik z18 = new Zawodnik("II", "JJ", 18);
+                Zawodnik z19 = new Zawodnik("KK", "LL", 19);
+                Zawodnik z20 = new Zawodnik("MM", "NN", 20);
 
-            d5.DodajZawodnika(z1);
-            d5.DodajZawodnika(z2);
-            d5.DodajZawodnika(z3);
-            d5.DodajZawodnika(z4);
-            d5.DodajZawodnika(z5);
+                d1.DodajZawodnika(z1);
+                d1.DodajZawodnika(z2);
+                d1.DodajZawodnika(z3);
+                d1.DodajZawodnika(z4);
+                d1.DodajZawodnika(z5);
 
-            d6.DodajZawodnika(z6);
-            d6.DodajZawodnika(z7);
-            d6.DodajZawodnika(z8);
-            d6.DodajZawodnika(z9);
-            d6.DodajZawodnika(z10);
+                d2.DodajZawodnika(z6);
+                d2.DodajZawodnika(z7);
+                d2.DodajZawodnika(z8);
+                d2.DodajZawodnika(z9);
+                d2.DodajZawodnika(z10);
 
-            d7.DodajZawodnika(z11);
-            d7.DodajZawodnika(z12);
-            d7.DodajZawodnika(z13);
-            d7.DodajZawodnika(z14);
-            d7.DodajZawodnika(z15);
+                d3.DodajZawodnika(z11);
+                d3.DodajZawodnika(z12);
+                d3.DodajZawodnika(z13);
+                d3.DodajZawodnika(z14);
+                d3.DodajZawodnika(z15);
 
-            d8.DodajZawodnika(z16);
-            d8.DodajZawodnika(z17);
-            d8.DodajZawodnika(z18);
-            d8.DodajZawodnika(z19);
-            d8.DodajZawodnika(z20);
+                d4.DodajZawodnika(z16);
+                d4.DodajZawodnika(z17);
+                d4.DodajZawodnika(z18);
+                d4.DodajZawodnika(z19);
+                d4.DodajZawodnika(z20);
 
-            #endregion
+                d5.DodajZawodnika(z1);
+                d5.DodajZawodnika(z2);
+                d5.DodajZawodnika(z3);
+                d5.DodajZawodnika(z4);
+                d5.DodajZawodnika(z5);
 
-            #region dodawanie druzyn
+                d6.DodajZawodnika(z6);
+                d6.DodajZawodnika(z7);
+                d6.DodajZawodnika(z8);
+                d6.DodajZawodnika(z9);
+                d6.DodajZawodnika(z10);
 
-            siatka.DodajDruzyne(d1);
-            siatka.DodajDruzyne(d2);
-            siatka.DodajDruzyne(d3);
-            siatka.DodajDruzyne(d4);
-            siatka.DodajDruzyne(d5);
-            siatka.DodajDruzyne(d6);
-            siatka.DodajDruzyne(d7);
-            siatka.DodajDruzyne(d8);
+                d7.DodajZawodnika(z11);
+                d7.DodajZawodnika(z12);
+                d7.DodajZawodnika(z13);
+                d7.DodajZawodnika(z14);
+                d7.DodajZawodnika(z15);
 
-            ognie.DodajDruzyne(d1);
-            ognie.DodajDruzyne(d2);
-            ognie.DodajDruzyne(d3);
-            ognie.DodajDruzyne(d4);
-            ognie.DodajDruzyne(d5);
-            ognie.DodajDruzyne(d6);
-            ognie.DodajDruzyne(d7);
-            ognie.DodajDruzyne(d8);
+                d8.DodajZawodnika(z16);
+                d8.DodajZawodnika(z17);
+                d8.DodajZawodnika(z18);
+                d8.DodajZawodnika(z19);
+                d8.DodajZawodnika(z20);
 
-            lina.DodajDruzyne(d1);
-            lina.DodajDruzyne(d2);
-            lina.DodajDruzyne(d3);
-            lina.DodajDruzyne(d4);
-            lina.DodajDruzyne(d5);
-            lina.DodajDruzyne(d6);
-            lina.DodajDruzyne(d7);
-            lina.DodajDruzyne(d8);
+                #endregion
 
-            #endregion
+                #region dodawanie druzyn
+
+                siatka.DodajDruzyne(d1);
+                siatka.DodajDruzyne(d2);
+                siatka.DodajDruzyne(d3);
+                siatka.DodajDruzyne(d4);
+                siatka.DodajDruzyne(d5);
+                siatka.DodajDruzyne(d6);
+                siatka.DodajDruzyne(d7);
+                siatka.DodajDruzyne(d8);
+
+                ognie.DodajDruzyne(d1);
+                ognie.DodajDruzyne(d2);
+                ognie.DodajDruzyne(d3);
+                ognie.DodajDruzyne(d4);
+                ognie.DodajDruzyne(d5);
+                ognie.DodajDruzyne(d6);
+                ognie.DodajDruzyne(d7);
+                ognie.DodajDruzyne(d8);
+
+                lina.DodajDruzyne(d1);
+                lina.DodajDruzyne(d2);
+                lina.DodajDruzyne(d3);
+                lina.DodajDruzyne(d4);
+                lina.DodajDruzyne(d5);
+                lina.DodajDruzyne(d6);
+                lina.DodajDruzyne(d7);
+                lina.DodajDruzyne(d8);
+
+                #endregion
+            }
 
             #region menu
 
@@ -209,7 +223,7 @@ namespace Projekt
 
                             #region przed rozpoczeciem rozgrywek
                             //rozgrywka generuj faze grupową
-                            if (fazaS == 0)
+                            if (siatka.faza == 0)
                             {
                                 Console.WriteLine(siatka.ToString());
                                 Console.WriteLine("Nie zaczeto");
@@ -224,7 +238,7 @@ namespace Projekt
                                     try
                                     {
                                         siatka.GenerujFazeGrupowa(sed);
-                                        fazaS = 1;
+                                        siatka.faza = 1;
                                     }
                                     catch (NotEnoughRefereesException e)
                                     {
@@ -276,7 +290,7 @@ namespace Projekt
 
                             #region po rozegraniu rozgrywek grupowych
                             //rozgrywka generuj pol final
-                            if (fazaS == 1)
+                            if (siatka.faza == 1)
                             {
                                 Console.WriteLine(siatka.TabelaWynikow());
                                 Console.WriteLine("Wcisnij 1 by rozpocząć faze polfinalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
@@ -290,7 +304,7 @@ namespace Projekt
                                         try
                                         {
                                             siatka.GenerujPolFinal(sed);
-                                            fazaS = 2;
+                                            siatka.faza = 2;
                                         }
                                         catch (NotEnoughRefereesException e)
                                         {
@@ -312,7 +326,7 @@ namespace Projekt
 
                             #region po rozegraniu polfinalu
                             //rozgrywka generuj final
-                            if (fazaS == 2)
+                            if (siatka.faza == 2)
                             {
                                 Console.WriteLine(siatka.TabelaWynikow());
                                 Console.WriteLine("Wcisnij 1 by rozpocząć faze finalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
@@ -326,7 +340,7 @@ namespace Projekt
                                         try
                                         {
                                             siatka.GenerujFinal(sed);
-                                            fazaS = 3;
+                                            siatka.faza = 3;
                                         }
                                         catch (NotEnoughRefereesException e)
                                         {
@@ -348,7 +362,7 @@ namespace Projekt
 
                             #region po rozegraniu finalu
                             //wyswietl rezultat
-                            if (fazaS == 3)
+                            if (siatka.faza == 3)
                             {
                                 Console.WriteLine(siatka.TabelaWynikow());
                                 Console.WriteLine("ZWYCIEZCA: " + siatka.ListaDruzyn[0]);
@@ -385,7 +399,7 @@ namespace Projekt
 
                             #region przed rozpoczeciem rozgrywek
                             //rozgrywka generuj faze grupową
-                            if (fazaO == 0)
+                            if (ognie.faza == 0)
                             {
                                 Console.WriteLine(ognie.ToString());
                                 Console.WriteLine("Nie zaczeto");
@@ -400,7 +414,7 @@ namespace Projekt
                                     try
                                     {
                                         ognie.GenerujFazeGrupowa(sed);
-                                        fazaO = 1;
+                                        ognie.faza = 1;
                                     }
                                     catch (NotEnoughRefereesException e)
                                     {
@@ -452,7 +466,7 @@ namespace Projekt
 
                             #region po rozegraniu rozgrywek grupowych
                             //rozgrywka generuj pol final
-                            if (fazaO == 1)
+                            if (ognie.faza == 1)
                             {
                                 Console.WriteLine(ognie.TabelaWynikow());
                                 Console.WriteLine("Wcisnij 1 by rozpocząć faze polfinalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
@@ -466,7 +480,7 @@ namespace Projekt
                                         try
                                         {
                                             ognie.GenerujPolFinal(sed);
-                                            fazaO = 2;
+                                            ognie.faza = 2;
                                         }
                                         catch (NotEnoughRefereesException e)
                                         {
@@ -488,7 +502,7 @@ namespace Projekt
 
                             #region po rozegraniu polfinalu
                             //rozgrywka generuj final
-                            if (fazaO == 2)
+                            if (ognie.faza == 2)
                             {
                                 Console.WriteLine(ognie.TabelaWynikow());
                                 Console.WriteLine("Wcisnij 1 by rozpocząć faze finalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
@@ -502,7 +516,7 @@ namespace Projekt
                                         try
                                         {
                                             ognie.GenerujFinal(sed);
-                                            fazaO = 3;
+                                            ognie.faza = 3;
                                         }
                                         catch (NotEnoughRefereesException e)
                                         {
@@ -524,7 +538,7 @@ namespace Projekt
 
                             #region po rozegraniu finalu
                             //wyswietl rezultat
-                            if (fazaO == 3)
+                            if (ognie.faza == 3)
                             {
                                 Console.WriteLine(ognie.TabelaWynikow());
                                 Console.WriteLine("ZWYCIEZCA: " + ognie.ListaDruzyn[0]);
@@ -561,7 +575,7 @@ namespace Projekt
 
                             #region przed rozpoczeciem rozgrywek
                             //rozgrywka generuj faze grupową
-                            if (fazaL == 0)
+                            if (lina.faza == 0)
                             {
                                 Console.WriteLine(lina.ToString());
                                 Console.WriteLine("Nie zaczeto");
@@ -576,7 +590,7 @@ namespace Projekt
                                     try
                                     {
                                         lina.GenerujFazeGrupowa(sed);
-                                        fazaL = 1;
+                                        lina.faza = 1;
                                     }
                                     catch (NotEnoughRefereesException e)
                                     {
@@ -628,7 +642,7 @@ namespace Projekt
 
                             #region po rozegraniu rozgrywek grupowych
                             //rozgrywka generuj pol final
-                            if (fazaL == 1)
+                            if (lina.faza == 1)
                             {
                                 Console.WriteLine(lina.TabelaWynikow());
                                 Console.WriteLine("Wcisnij 1 by rozpocząć faze polfinalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
@@ -642,7 +656,7 @@ namespace Projekt
                                         try
                                         {
                                             lina.GenerujPolFinal(sed);
-                                            fazaL = 2;
+                                            lina.faza = 2;
                                         }
                                         catch (NotEnoughRefereesException e)
                                         {
@@ -664,7 +678,7 @@ namespace Projekt
 
                             #region po rozegraniu polfinalu
                             //rozgrywka generuj final
-                            if (fazaL == 2)
+                            if (lina.faza == 2)
                             {
                                 Console.WriteLine(lina.TabelaWynikow());
                                 Console.WriteLine("Wcisnij 1 by rozpocząć faze finalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
@@ -678,7 +692,7 @@ namespace Projekt
                                         try
                                         {
                                             lina.GenerujFinal(sed);
-                                            fazaL = 3;
+                                            lina.faza = 3;
                                         }
                                         catch (NotEnoughRefereesException e)
                                         {
@@ -701,7 +715,7 @@ namespace Projekt
 
                             #region po rozegraniu finalu
                             //wyswietl rezultat
-                            if (fazaL == 3)
+                            if (lina.faza == 3)
                             {
                                 Console.WriteLine(lina.TabelaWynikow());
                                 Console.WriteLine("ZWYCIEZCA: " + lina.ListaDruzyn[0]);
@@ -756,7 +770,7 @@ namespace Projekt
                                             Console.WriteLine(d.ToString());
                                             i++;
                                         }
-                                        if (fazaS < 1)
+                                        if (siatka.faza < 1)
                                         {
                                             Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, 3 by zmienic zawodnika w danej druzynie, Esc by wrocic");
                                             input1 = Console.ReadKey();
@@ -880,7 +894,7 @@ namespace Projekt
                                             Console.WriteLine(d.ToString());
                                             i++;
                                         }
-                                        if (fazaO < 1)
+                                        if (ognie.faza < 1)
                                         {
                                             Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, 3 by zmienic zawodnika w danej druzynie, Esc by wrocic");
                                             input1 = Console.ReadKey();
@@ -1004,7 +1018,7 @@ namespace Projekt
                                             Console.WriteLine(d.ToString());
                                             i++;
                                         }
-                                        if (fazaL < 1)
+                                        if (lina.faza < 1)
                                         {
                                             Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, 3 by zmienic zawodnika w danej druzynie, Esc by wrocic");
                                             input1 = Console.ReadKey();
@@ -1186,6 +1200,8 @@ namespace Projekt
                     case ConsoleKey.Escape:
 
                         #region sekcja wyjdz z aplikacji
+
+                        //zapisz dane
                         return;
                         #endregion
 
