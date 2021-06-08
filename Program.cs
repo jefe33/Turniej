@@ -397,8 +397,54 @@ namespace Projekt
                                 }
                                 if (input1.Key == ConsoleKey.D1)
                                 {
-                                    ognie.GenerujFazeGrupowa(sed);
-                                    fazaO = 1;
+                                    try
+                                    {
+                                        ognie.GenerujFazeGrupowa(sed);
+                                        fazaO = 1;
+                                    }
+                                    catch (NotEnoughRefereesException e)
+                                    {
+                                        Console.WriteLine("Niewystarczaja ilosc sedziow");
+                                        dodajS(sed);
+                                    }
+                                    catch (NotEnoughTeamsException)
+                                    {
+                                        Console.WriteLine("Niewystarczaja ilosc druzyn");
+                                        #region dodaj druzyne
+                                        Console.WriteLine("\nWpisz nazwe druzyny");
+                                        tmpD = new Druzyna(Console.ReadLine());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer pierwszego zawodnika, oddzielajac enterem");
+                                        tmpZ1.Imie = Console.ReadLine();
+                                        tmpZ1.Nazwisko = Console.ReadLine();
+                                        tmpZ1.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer drugiego zawodnika, oddzielajac enterem");
+                                        tmpZ2.Imie = Console.ReadLine();
+                                        tmpZ2.Nazwisko = Console.ReadLine();
+                                        tmpZ2.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer trzeciego zawodnika, oddzielajac enterem");
+                                        tmpZ3.Imie = Console.ReadLine();
+                                        tmpZ3.Nazwisko = Console.ReadLine();
+                                        tmpZ3.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer czwartego zawodnika, oddzielajac enterem");
+                                        tmpZ4.Imie = Console.ReadLine();
+                                        tmpZ4.Nazwisko = Console.ReadLine();
+                                        tmpZ4.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer piatego zawodnika, oddzielajac enterem");
+                                        tmpZ5.Imie = Console.ReadLine();
+                                        tmpZ5.Nazwisko = Console.ReadLine();
+                                        tmpZ5.NrZawodnika = Int16.Parse(wczytajint());
+
+                                        tmpD.DodajZawodnika(tmpZ1);
+                                        tmpD.DodajZawodnika(tmpZ2);
+                                        tmpD.DodajZawodnika(tmpZ3);
+                                        tmpD.DodajZawodnika(tmpZ4);
+                                        tmpD.DodajZawodnika(tmpZ5);
+                                        ognie.DodajDruzyne(tmpD);
+
+                                        Console.WriteLine("Dodano druzyne. Nacisnij dowolny klawisz by kontynuowac");
+                                        Console.ReadKey();
+                                        #endregion
+                                    }
                                     Console.Clear();
                                 }
                             }
@@ -417,8 +463,16 @@ namespace Projekt
                                 switch (input1.Key)
                                 {
                                     case ConsoleKey.D1:
-                                        ognie.GenerujPolFinal(sed);
-                                        fazaO = 2;
+                                        try
+                                        {
+                                            ognie.GenerujPolFinal(sed);
+                                            fazaO = 2;
+                                        }
+                                        catch (NotEnoughRefereesException e)
+                                        {
+                                            Console.WriteLine("Niewystarczaja ilosc sedziow");
+                                            dodajS(sed);
+                                        }
                                         Console.Clear();
                                         break;
                                     case ConsoleKey.D2:
@@ -445,8 +499,16 @@ namespace Projekt
                                 switch (input1.Key)
                                 {
                                     case ConsoleKey.D1:
-                                        ognie.GenerujFinal(sed);
-                                        fazaO = 3;
+                                        try
+                                        {
+                                            ognie.GenerujFinal(sed);
+                                            fazaO = 3;
+                                        }
+                                        catch (NotEnoughRefereesException e)
+                                        {
+                                            Console.WriteLine("Niewystarczaja ilosc sedziow");
+                                            dodajS(sed);
+                                        }
                                         Console.Clear();
                                         break;
                                     case ConsoleKey.D2:
@@ -511,9 +573,55 @@ namespace Projekt
                                 }
                                 if (input1.Key == ConsoleKey.D1)
                                 {
-                                    lina.GenerujFazeGrupowa(sed);
-                                    fazaL = 1;
-                                    Console.Clear();
+                                    try
+                                    {
+                                        lina.GenerujFazeGrupowa(sed);
+                                        fazaL = 1;
+                                    }
+                                    catch (NotEnoughRefereesException e)
+                                    {
+                                        Console.WriteLine("Niewystarczaja ilosc sedziow");
+                                        dodajS(sed);
+                                    }
+                                    catch (NotEnoughTeamsException)
+                                    {
+                                        Console.WriteLine("Niewystarczaja ilosc druzyn");
+                                        #region dodaj druzyne
+                                        Console.WriteLine("\nWpisz nazwe druzyny");
+                                        tmpD = new Druzyna(Console.ReadLine());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer pierwszego zawodnika, oddzielajac enterem");
+                                        tmpZ1.Imie = Console.ReadLine();
+                                        tmpZ1.Nazwisko = Console.ReadLine();
+                                        tmpZ1.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer drugiego zawodnika, oddzielajac enterem");
+                                        tmpZ2.Imie = Console.ReadLine();
+                                        tmpZ2.Nazwisko = Console.ReadLine();
+                                        tmpZ2.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer trzeciego zawodnika, oddzielajac enterem");
+                                        tmpZ3.Imie = Console.ReadLine();
+                                        tmpZ3.Nazwisko = Console.ReadLine();
+                                        tmpZ3.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer czwartego zawodnika, oddzielajac enterem");
+                                        tmpZ4.Imie = Console.ReadLine();
+                                        tmpZ4.Nazwisko = Console.ReadLine();
+                                        tmpZ4.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer piatego zawodnika, oddzielajac enterem");
+                                        tmpZ5.Imie = Console.ReadLine();
+                                        tmpZ5.Nazwisko = Console.ReadLine();
+                                        tmpZ5.NrZawodnika = Int16.Parse(wczytajint());
+
+                                        tmpD.DodajZawodnika(tmpZ1);
+                                        tmpD.DodajZawodnika(tmpZ2);
+                                        tmpD.DodajZawodnika(tmpZ3);
+                                        tmpD.DodajZawodnika(tmpZ4);
+                                        tmpD.DodajZawodnika(tmpZ5);
+                                        lina.DodajDruzyne(tmpD);
+
+                                        Console.WriteLine("Dodano druzyne. Nacisnij dowolny klawisz by kontynuowac");
+                                        Console.ReadKey();
+                                        #endregion
+                                    }
+                                    Console.Clear(); ;
                                 }
                             }
                             #endregion
@@ -531,8 +639,16 @@ namespace Projekt
                                 switch (input1.Key)
                                 {
                                     case ConsoleKey.D1:
-                                        lina.GenerujPolFinal(sed);
-                                        fazaL = 2;
+                                        try
+                                        {
+                                            lina.GenerujPolFinal(sed);
+                                            fazaL = 2;
+                                        }
+                                        catch (NotEnoughRefereesException e)
+                                        {
+                                            Console.WriteLine("Niewystarczaja ilosc sedziow");
+                                            dodajS(sed);
+                                        }
                                         Console.Clear();
                                         break;
                                     case ConsoleKey.D2:
@@ -559,8 +675,16 @@ namespace Projekt
                                 switch (input1.Key)
                                 {
                                     case ConsoleKey.D1:
-                                        lina.GenerujFinal(sed);
-                                        fazaL = 3;
+                                        try
+                                        {
+                                            lina.GenerujFinal(sed);
+                                            fazaL = 3;
+                                        }
+                                        catch (NotEnoughRefereesException e)
+                                        {
+                                            Console.WriteLine("Niewystarczaja ilosc sedziow");
+                                            dodajS(sed);
+                                        }
                                         Console.Clear();
                                         break;
                                     case ConsoleKey.D2:
