@@ -948,9 +948,10 @@ namespace Projekt
 
                                     #region dodaj sedziego
                                     Console.WriteLine("\nWpisz imie nowego sedziego");
+                                    tmpS = new Sedzia("tmp", "tmp");
                                     tmpS.Imie = Console.ReadLine();
                                     Console.WriteLine("Wpisz nazwisko");
-                                    tmpS.Imie = Console.ReadLine();
+                                    tmpS.Nazwisko = Console.ReadLine();
                                     sed.DodajSedziego(tmpS);
                                     Console.WriteLine("Dodano sedziego. Nacisnij dowolny klawisz by wrocic");
                                     Console.ReadKey();
@@ -961,11 +962,18 @@ namespace Projekt
 
                                     #region usun sedziego
                                     Console.WriteLine("\nWpisz imie sedziego ktora chcesz usunac");
+                                    tmpS = new Sedzia("tmp", "tmp");
                                     tmpS.Imie = Console.ReadLine();
                                     Console.WriteLine("Wpisz nazwisko sedziego");
                                     tmpS.Nazwisko = Console.ReadLine();
-                                    sed.UsunSedziego(tmpS.Imie,tmpS.Nazwisko);
-                                    Console.WriteLine("Usunieto sedziego. Nacisnij dowolny klawisz by wrocic");
+                                    if (sed.UsunSedziego(tmpS.Imie, tmpS.Nazwisko))
+                                    {
+                                        Console.WriteLine("Usunieto sedziego. Nacisnij dowolny klawisz by wrocic");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Nieznaleziono sedziego. Nacisnij dowolny klawisz by wrocic");
+                                    }
                                     Console.ReadKey();
                                     #endregion
 
