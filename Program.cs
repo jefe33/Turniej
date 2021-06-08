@@ -84,6 +84,7 @@ namespace Projekt
                         siatka = (Turniej) turnieje[0];
                         ognie = (Turniej) turnieje[1];
                         lina = (Turniej) turnieje[2];
+                        sed = (Sedziowie) turnieje[3];
                         break;
                     }
                     catch (IOException e)
@@ -1243,6 +1244,7 @@ namespace Projekt
                                     turnieje.Add(siatka);
                                     turnieje.Add(ognie);
                                     turnieje.Add(lina);
+                                    turnieje.Add(sed);
                                     Plik.Zapisz(sciezka, turnieje);
                                     break;
                                 }
