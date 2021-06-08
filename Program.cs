@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using Projekt.Exceptions;
 
 namespace Projekt
@@ -72,7 +74,29 @@ namespace Projekt
             if (input1.Key == ConsoleKey.Y)
             {
                 //wczytaj pliki
-
+                while (true)
+                {
+                    try
+                    {
+                        Console.WriteLine("Podaj sciezke/nazwe pliku");
+                        string sciezka = Console.ReadLine();
+                        List<Object> turnieje = Plik.Wczytaj<List<Object>>(sciezka);
+                        siatka = (Turniej) turnieje[0];
+                        ognie = (Turniej) turnieje[1];
+                        lina = (Turniej) turnieje[2];
+                        break;
+                    }
+                    catch (IOException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        break;
+                    }
+                }
+                
             }
             else
             {
@@ -1200,12 +1224,42 @@ namespace Projekt
                     case ConsoleKey.Escape:
 
                         #region sekcja wyjdz z aplikacji
-
+                        Console.Clear();
+                        Console.WriteLine("Czy chcesz zapisac stan turnieju? \nY/N");
+                        do
+                        {
+                            input1 = Console.ReadKey();
+                        } while (input1.Key != ConsoleKey.Y && input1.Key != ConsoleKey.N);
                         //zapisz dane
+                        if (input1.Key == ConsoleKey.Y)
+                        {
+                            while (true)
+                            {
+                                try
+                                {
+                                    Console.WriteLine("Podaj sciezke/nazwe pliku do zapisu stanu Turniejow");
+                                    string sciezka = Console.ReadLine();
+                                    List<Object> turnieje = new List<object>();
+                                    turnieje.Add(siatka);
+                                    turnieje.Add(ognie);
+                                    turnieje.Add(lina);
+                                    Plik.Zapisz(sciezka, turnieje);
+                                    break;
+                                }
+                                catch (IOException e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                    break;
+                                }
+                            }
+                        }
+
                         return;
                         #endregion
-
-                        break;
                     default:
                         //opcja domyslna na wypadek zepsucia wejscia
                         break;
