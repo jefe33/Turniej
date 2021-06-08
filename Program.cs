@@ -19,6 +19,18 @@ namespace Projekt
             return inputS;
         }
 
+        static private void dodajS(Sedziowie sed)
+        {
+            Console.WriteLine("\nWpisz imie nowego sedziego");
+            Sedzia tmpS = new Sedzia("tmp", "tmp");
+            tmpS.Imie = Console.ReadLine();
+            Console.WriteLine("Wpisz nazwisko");
+            tmpS.Nazwisko = Console.ReadLine();
+            sed.DodajSedziego(tmpS);
+            Console.WriteLine("Dodano sedziego. Nacisnij dowolny klawisz by wrocic");
+            Console.ReadKey();
+        }
+
         static void Main(string[] args)
         {
             Turniej siatka= new Turniej("siatkowka");
@@ -209,8 +221,54 @@ namespace Projekt
                                 }
                                 if(input1.Key == ConsoleKey.D1)
                                 {
-                                    siatka.GenerujFazeGrupowa(sed);
-                                    fazaS = 1;
+                                    try
+                                    {
+                                        siatka.GenerujFazeGrupowa(sed);
+                                        fazaS = 1;
+                                    }
+                                    catch (NotEnoughRefereesException e)
+                                    {
+                                        Console.WriteLine("Niewystarczaja ilosc sedziow");
+                                        dodajS(sed);
+                                    }
+                                    catch (NotEnoughTeamsException)
+                                    {
+                                        Console.WriteLine("Niewystarczaja ilosc druzyn");
+                                        #region dodaj druzyne
+                                        Console.WriteLine("\nWpisz nazwe druzyny");
+                                        tmpD = new Druzyna(Console.ReadLine());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer pierwszego zawodnika, oddzielajac enterem");
+                                        tmpZ1.Imie = Console.ReadLine();
+                                        tmpZ1.Nazwisko = Console.ReadLine();
+                                        tmpZ1.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer drugiego zawodnika, oddzielajac enterem");
+                                        tmpZ2.Imie = Console.ReadLine();
+                                        tmpZ2.Nazwisko = Console.ReadLine();
+                                        tmpZ2.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer trzeciego zawodnika, oddzielajac enterem");
+                                        tmpZ3.Imie = Console.ReadLine();
+                                        tmpZ3.Nazwisko = Console.ReadLine();
+                                        tmpZ3.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer czwartego zawodnika, oddzielajac enterem");
+                                        tmpZ4.Imie = Console.ReadLine();
+                                        tmpZ4.Nazwisko = Console.ReadLine();
+                                        tmpZ4.NrZawodnika = Int16.Parse(wczytajint());
+                                        Console.WriteLine("Wpisz imie, nazwisko i numer piatego zawodnika, oddzielajac enterem");
+                                        tmpZ5.Imie = Console.ReadLine();
+                                        tmpZ5.Nazwisko = Console.ReadLine();
+                                        tmpZ5.NrZawodnika = Int16.Parse(wczytajint());
+
+                                        tmpD.DodajZawodnika(tmpZ1);
+                                        tmpD.DodajZawodnika(tmpZ2);
+                                        tmpD.DodajZawodnika(tmpZ3);
+                                        tmpD.DodajZawodnika(tmpZ4);
+                                        tmpD.DodajZawodnika(tmpZ5);
+                                        siatka.DodajDruzyne(tmpD);
+
+                                        Console.WriteLine("Dodano druzyne. Nacisnij dowolny klawisz by kontynuowac");
+                                        Console.ReadKey();
+                                        #endregion
+                                    }
                                     Console.Clear();
                                 }
                             }
@@ -229,8 +287,16 @@ namespace Projekt
                                 switch (input1.Key)
                                 {
                                     case ConsoleKey.D1:
-                                        siatka.GenerujPolFinal(sed);
-                                        fazaS = 2;
+                                        try
+                                        {
+                                            siatka.GenerujPolFinal(sed);
+                                            fazaS = 2;
+                                        }
+                                        catch (NotEnoughRefereesException e)
+                                        {
+                                            Console.WriteLine("Niewystarczaja ilosc sedziow");
+                                            dodajS(sed);
+                                        }
                                         Console.Clear();
                                         break;
                                     case ConsoleKey.D2:
@@ -257,8 +323,16 @@ namespace Projekt
                                 switch (input1.Key)
                                 {
                                     case ConsoleKey.D1:
-                                        siatka.GenerujFinal(sed);
-                                        fazaS = 3;
+                                        try
+                                        {
+                                            siatka.GenerujFinal(sed);
+                                            fazaS = 3;
+                                        }
+                                        catch (NotEnoughRefereesException e)
+                                        {
+                                            Console.WriteLine("Niewystarczaja ilosc sedziow");
+                                            dodajS(sed);
+                                        }
                                         Console.Clear();
                                         break;
                                     case ConsoleKey.D2:
@@ -558,7 +632,7 @@ namespace Projekt
                                             Console.WriteLine(d.ToString());
                                             i++;
                                         }
-                                        if (fazaS < 2)
+                                        if (fazaS < 1)
                                         {
                                             Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, 3 by zmienic zawodnika w danej druzynie, Esc by wrocic");
                                             input1 = Console.ReadKey();
@@ -682,7 +756,7 @@ namespace Projekt
                                             Console.WriteLine(d.ToString());
                                             i++;
                                         }
-                                        if (fazaO < 2)
+                                        if (fazaO < 1)
                                         {
                                             Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, 3 by zmienic zawodnika w danej druzynie, Esc by wrocic");
                                             input1 = Console.ReadKey();
@@ -806,7 +880,7 @@ namespace Projekt
                                             Console.WriteLine(d.ToString());
                                             i++;
                                         }
-                                        if (fazaL < 2)
+                                        if (fazaL < 1)
                                         {
                                             Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, 3 by zmienic zawodnika w danej druzynie, Esc by wrocic");
                                             input1 = Console.ReadKey();

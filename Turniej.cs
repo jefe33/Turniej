@@ -106,6 +106,11 @@ namespace Projekt
         }
         public void GenerujFazeGrupowa(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
+            //Wyjatek sprawdzajacy czy sa przynajmniej 4 druzyny na liscie
+            if (listaDruzyn.Count < 4)
+            {
+                throw new NotEnoughTeamsException("Musza byc przynajmniej 4 druzyny aby wygenerowac polfinal");
+            }
             //Wyjatek sprawdzajacy czy sa przynajmniej 3 sedziowie na liscie
             if (dostepniSedziowie.GetListaSedziow().Count < 3)
             {
@@ -124,11 +129,6 @@ namespace Projekt
         }
         public void GenerujPolFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
-            //Wyjatek sprawdzajacy czy sa przynajmniej 4 druzyny na liscie
-            if (listaDruzyn.Count < 4)
-            {
-                throw new NotEnoughTeamsException("Musza byc przynajmniej 4 druzyny aby wygenerowac polfinal");
-            }
             //Wyjatek sprawdzajacy czy sa przynajmniej 3 sedziowie na liscie
             if (dostepniSedziowie.GetListaSedziow().Count < 3)
             {
@@ -158,11 +158,6 @@ namespace Projekt
         }
         public void GenerujFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
-            //Wyjatek sprawdzajacy czy sa przynajmniej 2 druzyny na liscie
-            if (listaDruzyn.Count < 2)
-            {
-                throw new NotEnoughTeamsException("Musza byc przynajmniej 2 druzyny aby wygenerowac final");
-            }
             //Wyjatek sprawdzajacy czy sa przynajmniej 3 sedziowie na liscie
             if (dostepniSedziowie.GetListaSedziow().Count < 3)
             {
