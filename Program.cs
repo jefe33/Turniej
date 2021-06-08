@@ -39,7 +39,8 @@ namespace Projekt
 
             ConsoleKeyInfo input1;
             int inputINT;
-
+            int inputINT2;
+            int i;
 
             #region tmp
 
@@ -57,6 +58,7 @@ namespace Projekt
             tmpD.DodajZawodnika(tmpZ4);
             tmpD.DodajZawodnika(tmpZ5);
 
+            Sedzia tmpS = new Sedzia("tymczasowy", "sedzia");
             #endregion
 
             #region druzyny
@@ -199,7 +201,7 @@ namespace Projekt
                             {
                                 Console.WriteLine(siatka.ToString());
                                 Console.WriteLine("Nie zaczeto");
-                                Console.WriteLine("Wcisnij 1 by rozpocząć pierwsza faze rozgrywek, Esc by wyjsc");
+                                Console.WriteLine("Wcisnij 1 by rozpocząć faze grupowa, Esc by wyjsc");
                                 input1 = Console.ReadKey();
                                 while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.Escape)
                                 {
@@ -219,7 +221,7 @@ namespace Projekt
                             if (fazaS == 1)
                             {
                                 Console.WriteLine(siatka.TabelaWynikow());
-                                Console.WriteLine("Wcisnij 1 by rozpocząć druga faze rozgrywek, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
+                                Console.WriteLine("Wcisnij 1 by rozpocząć faze polfinalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
                                 while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.Escape)
                                 {
                                     input1 = Console.ReadKey();
@@ -247,7 +249,7 @@ namespace Projekt
                             if (fazaS == 2)
                             {
                                 Console.WriteLine(siatka.TabelaWynikow());
-                                Console.WriteLine("Wcisnij 1 by rozpocząć trzecia faze rozgrywek, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
+                                Console.WriteLine("Wcisnij 1 by rozpocząć faze finalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
                                 while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.Escape)
                                 {
                                     input1 = Console.ReadKey();
@@ -313,7 +315,7 @@ namespace Projekt
                             {
                                 Console.WriteLine(ognie.ToString());
                                 Console.WriteLine("Nie zaczeto");
-                                Console.WriteLine("Wcisnij 1 by rozpocząć pierwsza faze rozgrywek, Esc by wyjsc");
+                                Console.WriteLine("Wcisnij 1 by rozpocząć faze grupowa, Esc by wyjsc");
                                 input1 = Console.ReadKey();
                                 while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.Escape)
                                 {
@@ -333,7 +335,7 @@ namespace Projekt
                             if (fazaO == 1)
                             {
                                 Console.WriteLine(ognie.TabelaWynikow());
-                                Console.WriteLine("Wcisnij 1 by rozpocząć druga faze rozgrywek, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
+                                Console.WriteLine("Wcisnij 1 by rozpocząć faze polfinalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
                                 while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.Escape)
                                 {
                                     input1 = Console.ReadKey();
@@ -361,7 +363,7 @@ namespace Projekt
                             if (fazaO == 2)
                             {
                                 Console.WriteLine(ognie.TabelaWynikow());
-                                Console.WriteLine("Wcisnij 1 by rozpocząć trzecia faze rozgrywek, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
+                                Console.WriteLine("Wcisnij 1 by rozpocząć faze finalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
                                 while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.Escape)
                                 {
                                     input1 = Console.ReadKey();
@@ -427,9 +429,9 @@ namespace Projekt
                             {
                                 Console.WriteLine(lina.ToString());
                                 Console.WriteLine("Nie zaczeto");
-                                Console.WriteLine("Wcisnij 1 by rozpocząć pierwsza faze rozgrywek, 2 by wyjsc");
+                                Console.WriteLine("Wcisnij 1 by rozpocząć faze grupowa, Esc by wyjsc");
                                 input1 = Console.ReadKey();
-                                while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2)
+                                while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.Escape)
                                 {
                                     input1 = Console.ReadKey();
                                 }
@@ -447,7 +449,7 @@ namespace Projekt
                             if (fazaL == 1)
                             {
                                 Console.WriteLine(lina.TabelaWynikow());
-                                Console.WriteLine("Wcisnij 1 by rozpocząć druga faze rozgrywek, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
+                                Console.WriteLine("Wcisnij 1 by rozpocząć faze polfinalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
                                 while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.Escape)
                                 {
                                     input1 = Console.ReadKey();
@@ -475,7 +477,7 @@ namespace Projekt
                             if (fazaL == 2)
                             {
                                 Console.WriteLine(lina.TabelaWynikow());
-                                Console.WriteLine("Wcisnij 1 by rozpocząć trzecia faze rozgrywek, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
+                                Console.WriteLine("Wcisnij 1 by rozpocząć faze finalowa, 2 by wyswietlic historie rozgrywek, Esc by wyjsc"); input1 = Console.ReadKey();
                                 while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.Escape)
                                 {
                                     input1 = Console.ReadKey();
@@ -549,7 +551,7 @@ namespace Projekt
                                     {
                                         Console.Clear();
                                         Console.WriteLine("Lista druzyn biorace udzial w siatkowce:");
-                                        int i = 1;
+                                        i = 1;
                                         foreach (Druzyna d in siatka.ListaDruzyn)
                                         {
                                             Console.WriteLine("Nr." + i);
@@ -558,9 +560,9 @@ namespace Projekt
                                         }
                                         if (fazaS < 2)
                                         {
-                                            Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, Esc by wrocic");
+                                            Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, 3 by zmienic zawodnika w danej druzynie, Esc by wrocic");
                                             input1 = Console.ReadKey();
-                                            while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.Escape)
+                                            while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.D3 && input1.Key != ConsoleKey.Escape)
                                             {
                                                 input1 = Console.ReadKey();
                                             }
@@ -568,8 +570,8 @@ namespace Projekt
                                             {
                                                 case ConsoleKey.D1:
 
-                                                    #region dodaj zawodnika
-                                                    Console.WriteLine("Wpisz nazwe druzyny");
+                                                    #region dodaj druzyne
+                                                    Console.WriteLine("\nWpisz nazwe druzyny");
                                                     tmpD = new Druzyna(Console.ReadLine());
                                                     Console.WriteLine("Wpisz imie, nazwisko i numer pierwszego zawodnika, oddzielajac enterem");
                                                     tmpZ1.Imie = Console.ReadLine();
@@ -606,8 +608,8 @@ namespace Projekt
                                                     break;
                                                 case ConsoleKey.D2:
 
-                                                    #region usun zawodnika
-                                                    Console.WriteLine("Wpisz numer druzyny ktora chcesz usunac");
+                                                    #region usun druzyne
+                                                    Console.WriteLine("\nWpisz numer druzyny ktora chcesz usunac");
                                                     inputINT = Int16.Parse(wczytajint());
                                                     while (inputINT > siatka.ListaDruzyn.Count || inputINT < 0)
                                                     {
@@ -616,6 +618,34 @@ namespace Projekt
                                                     }
                                                     siatka.UsunDruzyne(siatka.ListaDruzyn[inputINT-1]);
                                                     Console.WriteLine("Usunieto druzyne. Nacisnij dowolny klawisz by wrocic");
+                                                    Console.ReadKey();
+                                                    #endregion
+
+                                                    break;
+                                                case ConsoleKey.D3:
+
+                                                    #region zmien zawodnika
+                                                    Console.WriteLine("\nWpisz numer druzyny ktora w ktorej chcesz zmienic zawodnika");
+                                                    inputINT = Int16.Parse(wczytajint());
+                                                    while (inputINT > siatka.ListaDruzyn.Count || inputINT < 0)
+                                                    {
+                                                        Console.WriteLine("Niepoprawny numer. Wpisz ponownie");
+                                                        inputINT = Int16.Parse(wczytajint());
+                                                    }
+                                                    Console.WriteLine("Wpisz numer zawodnika");
+                                                    inputINT2 = Int16.Parse(wczytajint());
+                                                    while (inputINT2 > 5 || inputINT2 < 0)
+                                                    {
+                                                        Console.WriteLine("Niepoprawny numer. Wpisz ponownie");
+                                                        inputINT2 = Int16.Parse(wczytajint());
+                                                    }
+                                                    Console.WriteLine("Wpisz imie nowego zawodnika");
+                                                    siatka.ListaDruzyn[inputINT - 1].Zawodnicy[inputINT2 - 1].Imie = Console.ReadLine();
+                                                    Console.WriteLine("Wpisz imie nowego zawodnika");
+                                                    siatka.ListaDruzyn[inputINT - 1].Zawodnicy[inputINT2 - 1].Nazwisko = Console.ReadLine();
+                                                    Console.WriteLine("Wpisz imie nowego zawodnika");
+                                                    siatka.ListaDruzyn[inputINT - 1].Zawodnicy[inputINT2 - 1].NrZawodnika = Int16.Parse(wczytajint());
+                                                    Console.WriteLine("Zmieniono zawodnika. Nacisnij dowolny klawisz by wrocic");
                                                     Console.ReadKey();
                                                     #endregion
 
@@ -645,7 +675,7 @@ namespace Projekt
                                     {
                                         Console.Clear();
                                         Console.WriteLine("Lista druzyn biorace udzial w 2 ogniach:");
-                                        int i = 1;
+                                        i = 1;
                                         foreach (Druzyna d in ognie.ListaDruzyn)
                                         {
                                             Console.WriteLine("Nr." + i);
@@ -654,9 +684,9 @@ namespace Projekt
                                         }
                                         if (fazaO < 2)
                                         {
-                                            Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, Esc by wrocic");
+                                            Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, 3 by zmienic zawodnika w danej druzynie, Esc by wrocic");
                                             input1 = Console.ReadKey();
-                                            while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.Escape)
+                                            while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.D3 && input1.Key != ConsoleKey.Escape)
                                             {
                                                 input1 = Console.ReadKey();
                                             }
@@ -665,7 +695,7 @@ namespace Projekt
                                                 case ConsoleKey.D1:
 
                                                     #region dodaj zawodnika
-                                                    Console.WriteLine("Wpisz nazwe druzyny");
+                                                    Console.WriteLine("\nWpisz nazwe druzyny");
                                                     tmpD = new Druzyna(Console.ReadLine());
                                                     Console.WriteLine("Wpisz imie, nazwisko i numer pierwszego zawodnika, oddzielajac enterem");
                                                     tmpZ1.Imie = Console.ReadLine();
@@ -703,7 +733,7 @@ namespace Projekt
                                                 case ConsoleKey.D2:
 
                                                     #region usun zawodnika
-                                                    Console.WriteLine("Wpisz numer druzyny ktora chcesz usunac");
+                                                    Console.WriteLine("\nWpisz numer druzyny ktora chcesz usunac");
                                                     inputINT = Int16.Parse(wczytajint());
                                                     while (inputINT > ognie.ListaDruzyn.Count || inputINT < 0)
                                                     {
@@ -712,6 +742,34 @@ namespace Projekt
                                                     }
                                                     ognie.UsunDruzyne(ognie.ListaDruzyn[inputINT-1]);
                                                     Console.WriteLine("Usunieto druzyne. Nacisnij dowolny klawisz by wrocic");
+                                                    Console.ReadKey();
+                                                    #endregion
+
+                                                    break;
+                                                case ConsoleKey.D3:
+
+                                                    #region zmien zawodnika
+                                                    Console.WriteLine("\nWpisz numer druzyny ktora w ktorej chcesz zmienic zawodnika");
+                                                    inputINT = Int16.Parse(wczytajint());
+                                                    while (inputINT > ognie.ListaDruzyn.Count || inputINT < 0)
+                                                    {
+                                                        Console.WriteLine("Niepoprawny numer. Wpisz ponownie");
+                                                        inputINT = Int16.Parse(wczytajint());
+                                                    }
+                                                    Console.WriteLine("Wpisz numer zawodnika");
+                                                    inputINT2 = Int16.Parse(wczytajint());
+                                                    while (inputINT2 > 5 || inputINT2 < 0)
+                                                    {
+                                                        Console.WriteLine("Niepoprawny numer. Wpisz ponownie");
+                                                        inputINT2 = Int16.Parse(wczytajint());
+                                                    }
+                                                    Console.WriteLine("Wpisz imie nowego zawodnika");
+                                                    ognie.ListaDruzyn[inputINT - 1].Zawodnicy[inputINT2 - 1].Imie = Console.ReadLine();
+                                                    Console.WriteLine("Wpisz imie nowego zawodnika");
+                                                    ognie.ListaDruzyn[inputINT - 1].Zawodnicy[inputINT2 - 1].Nazwisko = Console.ReadLine();
+                                                    Console.WriteLine("Wpisz imie nowego zawodnika");
+                                                    ognie.ListaDruzyn[inputINT - 1].Zawodnicy[inputINT2 - 1].NrZawodnika = Int16.Parse(wczytajint());
+                                                    Console.WriteLine("Zmieniono zawodnika. Nacisnij dowolny klawisz by wrocic");
                                                     Console.ReadKey();
                                                     #endregion
 
@@ -741,7 +799,7 @@ namespace Projekt
                                     {
                                         Console.Clear();
                                         Console.WriteLine("Lista druzyn biorace udzial w przeciagniu liny:");
-                                        int i = 1;
+                                        i = 1;
                                         foreach (Druzyna d in lina.ListaDruzyn)
                                         {
                                             Console.WriteLine("Nr." + i);
@@ -750,9 +808,9 @@ namespace Projekt
                                         }
                                         if (fazaL < 2)
                                         {
-                                            Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, Esc by wrocic");
+                                            Console.WriteLine("Wpisz 1 by dodac druzyne, 2 by usunac druzyne, 3 by zmienic zawodnika w danej druzynie, Esc by wrocic");
                                             input1 = Console.ReadKey();
-                                            while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.Escape)
+                                            while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.D3 && input1.Key != ConsoleKey.Escape)
                                             {
                                                 input1 = Console.ReadKey();
                                             }
@@ -760,8 +818,8 @@ namespace Projekt
                                             {
                                                 case ConsoleKey.D1:
 
-                                                    #region dodaj zawodnika
-                                                    Console.WriteLine("Wpisz nazwe druzyny");
+                                                    #region dodaj druzyne
+                                                    Console.WriteLine("\nWpisz nazwe druzyny");
                                                     tmpD = new Druzyna(Console.ReadLine());
                                                     Console.WriteLine("Wpisz imie, nazwisko i numer pierwszego zawodnika, oddzielajac enterem");
                                                     tmpZ1.Imie = Console.ReadLine();
@@ -798,8 +856,8 @@ namespace Projekt
                                                     break;
                                                 case ConsoleKey.D2:
 
-                                                    #region usun zawodnika
-                                                    Console.WriteLine("Wpisz numer druzyny ktora chcesz usunac");
+                                                    #region usun druzyne
+                                                    Console.WriteLine("\nWpisz numer druzyny ktora chcesz usunac");
                                                     inputINT = Int16.Parse(wczytajint());
                                                     while (inputINT > lina.ListaDruzyn.Count || inputINT < 0)
                                                     {
@@ -808,6 +866,34 @@ namespace Projekt
                                                     }
                                                     lina.UsunDruzyne(lina.ListaDruzyn[inputINT - 1]);
                                                     Console.WriteLine("Usunieto druzyne. Nacisnij dowolny klawisz by wrocic");
+                                                    Console.ReadKey();
+                                                    #endregion
+
+                                                    break;
+                                                case ConsoleKey.D3:
+
+                                                    #region zmien zawodnika
+                                                    Console.WriteLine("\nWpisz numer druzyny ktora w ktorej chcesz zmienic zawodnika");
+                                                    inputINT = Int16.Parse(wczytajint());
+                                                    while (inputINT > lina.ListaDruzyn.Count || inputINT < 0)
+                                                    {
+                                                        Console.WriteLine("Niepoprawny numer. Wpisz ponownie");
+                                                        inputINT = Int16.Parse(wczytajint());
+                                                    }
+                                                    Console.WriteLine("Wpisz numer zawodnika");
+                                                    inputINT2 = Int16.Parse(wczytajint());
+                                                    while (inputINT2 > 5 || inputINT2 < 0)
+                                                    {
+                                                        Console.WriteLine("Niepoprawny numer. Wpisz ponownie");
+                                                        inputINT2 = Int16.Parse(wczytajint());
+                                                    }
+                                                    Console.WriteLine("Wpisz imie nowego zawodnika");
+                                                    lina.ListaDruzyn[inputINT - 1].Zawodnicy[inputINT2 - 1].Imie = Console.ReadLine();
+                                                    Console.WriteLine("Wpisz imie nowego zawodnika");
+                                                    lina.ListaDruzyn[inputINT - 1].Zawodnicy[inputINT2 - 1].Nazwisko = Console.ReadLine();
+                                                    Console.WriteLine("Wpisz imie nowego zawodnika");
+                                                    lina.ListaDruzyn[inputINT - 1].Zawodnicy[inputINT2 - 1].NrZawodnika = Int16.Parse(wczytajint());
+                                                    Console.WriteLine("Zmieniono zawodnika. Nacisnij dowolny klawisz by wrocic");
                                                     Console.ReadKey();
                                                     #endregion
 
@@ -840,9 +926,54 @@ namespace Projekt
                     case ConsoleKey.D5:
 
                         #region sekcja zarzadanie sedziami
-                        Console.Clear();
-                        Console.WriteLine();
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Lista Sedziow:");
+                            i = 1;
+                            foreach (Sedzia S in sed.GetListaSedziow())
+                            {
+                                Console.WriteLine(i +"." + S.Imie + " " + S.Nazwisko);
+                                i++;
+                            }
+                            Console.WriteLine("Wcisnij 1 by dodac sedziego, 2 by usunac sedziego, Esc by wyjsc");
+                            input1 = Console.ReadKey();
+                            while (input1.Key != ConsoleKey.D1 && input1.Key != ConsoleKey.D2 && input1.Key != ConsoleKey.Escape)
+                            {
+                                input1 = Console.ReadKey();
+                            }
+                            switch (input1.Key)
+                            {
+                                case ConsoleKey.D1:
 
+                                    #region dodaj sedziego
+                                    Console.WriteLine("\nWpisz imie nowego sedziego");
+                                    tmpS.Imie = Console.ReadLine();
+                                    Console.WriteLine("Wpisz nazwisko");
+                                    tmpS.Imie = Console.ReadLine();
+                                    sed.DodajSedziego(tmpS);
+                                    Console.WriteLine("Dodano sedziego. Nacisnij dowolny klawisz by wrocic");
+                                    Console.ReadKey();
+                                    #endregion
+
+                                    break;
+                                case ConsoleKey.D2:
+
+                                    #region usun sedziego
+                                    Console.WriteLine("\nWpisz imie sedziego ktora chcesz usunac");
+                                    tmpS.Imie = Console.ReadLine();
+                                    Console.WriteLine("Wpisz nazwisko sedziego");
+                                    tmpS.Nazwisko = Console.ReadLine();
+                                    sed.UsunSedziego(tmpS.Imie,tmpS.Nazwisko);
+                                    Console.WriteLine("Usunieto sedziego. Nacisnij dowolny klawisz by wrocic");
+                                    Console.ReadKey();
+                                    #endregion
+
+                                    break;
+                                case ConsoleKey.Escape:
+                                    break;
+                            }
+                        } while (input1.Key != ConsoleKey.Escape);
                         #endregion
 
                         break;
