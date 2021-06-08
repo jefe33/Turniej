@@ -12,3 +12,10 @@ C:\Users\kacpe\Source\Repos\Projekt\obj\Debug\Projekt.csprojAssemblyReference.ca
 C:\Users\kacpe\Source\Repos\Projekt\obj\Debug\Projekt.csproj.CoreCompileInputs.cache
 C:\Users\kacpe\Source\Repos\Projekt\obj\Debug\Projekt.exe
 C:\Users\kacpe\Source\Repos\Projekt\obj\Debug\Projekt.pdb
+C:\Users\krzys\Source\Repos\Projekt\bin\Debug\Projekt.exe.config
+C:\Users\krzys\Source\Repos\Projekt\bin\Debug\Projekt.exe
+C:\Users\krzys\Source\Repos\Projekt\bin\Debug\Projekt.pdb
+C:\Users\krzys\Source\Repos\Projekt\obj\Debug\Projekt.csprojAssemblyReference.cache
+C:\Users\krzys\Source\Repos\Projekt\obj\Debug\Projekt.csproj.CoreCompileInputs.cache
+C:\Users\krzys\Source\Repos\Projekt\obj\Debug\Projekt.exe
+C:\Users\krzys\Source\Repos\Projekt\obj\Debug\Projekt.pdb

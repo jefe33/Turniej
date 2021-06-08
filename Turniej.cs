@@ -177,6 +177,7 @@ namespace Projekt
                 DodajRozgrywke(listaDruzyn[0], listaDruzyn[1], dostepniSedziowie.WybierzLosowegoSedziego(), rand.Next(2));
             else if (nazwaSportu.ToLower() == "siatkowka")
                 DodajRozgrywkeSiatkowki(listaDruzyn[0], listaDruzyn[1], dostepniSedziowie.WybierzLosowegoSedziego(), dostepniSedziowie.WybierzLosowegoSedziego(), dostepniSedziowie.WybierzLosowegoSedziego(), rand.Next(2));
+            SortujListeDruzyn();
         }
         public string TabelaWynikow() //Zmiana wzgledem diagramu UML usunalem parametr, bo nie jest portrzebny
         { //Tabela wynikow pokazuje aktualna ilosc wygranych druzyn, poniewaz ilosc wygranych sie zeruje w polfinale, bedzie trzeba w interfejsie robic jej kopie albo cos
