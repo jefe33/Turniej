@@ -240,7 +240,7 @@ namespace Projekt
                                         siatka.GenerujFazeGrupowa(sed);
                                         siatka.faza = 1;
                                     }
-                                    catch (NotEnoughRefereesException e)
+                                    catch (NotEnoughRefereesException)
                                     {
                                         Console.WriteLine("Niewystarczaja ilosc sedziow");
                                         dodajS(sed);
@@ -306,7 +306,7 @@ namespace Projekt
                                             siatka.GenerujPolFinal(sed);
                                             siatka.faza = 2;
                                         }
-                                        catch (NotEnoughRefereesException e)
+                                        catch (NotEnoughRefereesException)
                                         {
                                             Console.WriteLine("Niewystarczaja ilosc sedziow");
                                             dodajS(sed);
@@ -342,7 +342,7 @@ namespace Projekt
                                             siatka.GenerujFinal(sed);
                                             siatka.faza = 3;
                                         }
-                                        catch (NotEnoughRefereesException e)
+                                        catch (NotEnoughRefereesException )
                                         {
                                             Console.WriteLine("Niewystarczaja ilosc sedziow");
                                             dodajS(sed);
@@ -416,7 +416,7 @@ namespace Projekt
                                         ognie.GenerujFazeGrupowa(sed);
                                         ognie.faza = 1;
                                     }
-                                    catch (NotEnoughRefereesException e)
+                                    catch (NotEnoughRefereesException )
                                     {
                                         Console.WriteLine("Niewystarczaja ilosc sedziow");
                                         dodajS(sed);
@@ -482,7 +482,7 @@ namespace Projekt
                                             ognie.GenerujPolFinal(sed);
                                             ognie.faza = 2;
                                         }
-                                        catch (NotEnoughRefereesException e)
+                                        catch (NotEnoughRefereesException )
                                         {
                                             Console.WriteLine("Niewystarczaja ilosc sedziow");
                                             dodajS(sed);
@@ -518,7 +518,7 @@ namespace Projekt
                                             ognie.GenerujFinal(sed);
                                             ognie.faza = 3;
                                         }
-                                        catch (NotEnoughRefereesException e)
+                                        catch (NotEnoughRefereesException )
                                         {
                                             Console.WriteLine("Niewystarczaja ilosc sedziow");
                                             dodajS(sed);
@@ -592,7 +592,7 @@ namespace Projekt
                                         lina.GenerujFazeGrupowa(sed);
                                         lina.faza = 1;
                                     }
-                                    catch (NotEnoughRefereesException e)
+                                    catch (NotEnoughRefereesException )
                                     {
                                         Console.WriteLine("Niewystarczaja ilosc sedziow");
                                         dodajS(sed);
@@ -658,7 +658,7 @@ namespace Projekt
                                             lina.GenerujPolFinal(sed);
                                             lina.faza = 2;
                                         }
-                                        catch (NotEnoughRefereesException e)
+                                        catch (NotEnoughRefereesException )
                                         {
                                             Console.WriteLine("Niewystarczaja ilosc sedziow");
                                             dodajS(sed);
@@ -694,7 +694,7 @@ namespace Projekt
                                             lina.GenerujFinal(sed);
                                             lina.faza = 3;
                                         }
-                                        catch (NotEnoughRefereesException e)
+                                        catch (NotEnoughRefereesException )
                                         {
                                             Console.WriteLine("Niewystarczaja ilosc sedziow");
                                             dodajS(sed);
