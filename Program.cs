@@ -78,7 +78,7 @@ namespace Projekt
                 {
                     try
                     {
-                        Console.WriteLine("Podaj sciezke/nazwe pliku");
+                        Console.WriteLine("\nPodaj sciezke/nazwe pliku");
                         string sciezka = Console.ReadLine();
                         List<Object> turnieje = Plik.Wczytaj<List<Object>>(sciezka);
                         siatka = (Turniej) turnieje[0];

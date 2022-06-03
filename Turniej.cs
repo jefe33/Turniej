@@ -27,6 +27,7 @@ namespace Projekt
             listaRozgrywek = new List<Rozgrywka>();
             faza = 0;
         }
+        
         public override string ToString()
         {
             string napis = $"Turniej {nazwaSportu}\nLista Druzyn bioracych aktualnie udzial w turnieju:\n";
@@ -37,6 +38,7 @@ namespace Projekt
                 napis += r+"\n\n"; //napis += r.ToString()+"\n\n";
             return napis;
         }
+        
         public void DodajDruzyne(Druzyna nowaDruzyna) 
         {
             if (nowaDruzyna.Zawodnicy.Count != 5)
@@ -45,10 +47,13 @@ namespace Projekt
             }
             listaDruzyn.Add(nowaDruzyna); 
         }
+        
         public bool UsunDruzyne(Druzyna druzynaDoUsuniecia)
         {
             return listaDruzyn.Remove(druzynaDoUsuniecia);
         }
+        
+        
         public void DodajRozgrywke(Druzyna druzynaA, Druzyna druzynaB, Sedzia sedziaGlowny, int wynik)
         {
             //Wyjatek sprawdzajacy czy wynik jest rowny 0 albo 1
@@ -83,6 +88,8 @@ namespace Projekt
                     druzynaB.WynikPrzeciaganieLiny++;
             }
         }
+        
+        
         public void DodajRozgrywkeSiatkowki(Druzyna druzynaA, Druzyna druzynaB, Sedzia sedziaGlowny, Sedzia sedziaPomocniczy1, Sedzia sedziaPomocniczy2, int wynik)
         {
             //Wyjatek sprawdzajacy czy wynik jest rowny 0 albo 1
@@ -107,6 +114,8 @@ namespace Projekt
             else
                 druzynaB.WynikSiatkowka++;
         }
+        
+        
         public void GenerujFazeGrupowa(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
             //Wyjatek sprawdzajacy czy sa przynajmniej 4 druzyny na liscie
@@ -130,6 +139,8 @@ namespace Projekt
                     for (int j=i+1; j < listaDruzyn.Count; j++)
                         DodajRozgrywkeSiatkowki(listaDruzyn[i], listaDruzyn[j], dostepniSedziowie.WybierzLosowegoSedziego(), dostepniSedziowie.WybierzLosowegoSedziego(), dostepniSedziowie.WybierzLosowegoSedziego(), rand.Next(2));
         }
+        
+        
         public void GenerujPolFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
             //Wyjatek sprawdzajacy czy sa przynajmniej 3 sedziowie na liscie
@@ -159,6 +170,8 @@ namespace Projekt
                 DodajRozgrywkeSiatkowki(listaDruzyn[1], listaDruzyn[2], dostepniSedziowie.WybierzLosowegoSedziego(), dostepniSedziowie.WybierzLosowegoSedziego(), dostepniSedziowie.WybierzLosowegoSedziego(), rand.Next(2));
             }
         }
+        
+        
         public void GenerujFinal(Sedziowie dostepniSedziowie) //Zmiana wzgledem diagramu UML dodalem parametr Sedziowie, bo byl potrzebny
         {
             //Wyjatek sprawdzajacy czy sa przynajmniej 3 sedziowie na liscie
@@ -177,6 +190,8 @@ namespace Projekt
                 DodajRozgrywkeSiatkowki(listaDruzyn[0], listaDruzyn[1], dostepniSedziowie.WybierzLosowegoSedziego(), dostepniSedziowie.WybierzLosowegoSedziego(), dostepniSedziowie.WybierzLosowegoSedziego(), rand.Next(2));
             SortujListeDruzyn();
         }
+        
+        
         public string TabelaWynikow() //Zmiana wzgledem diagramu UML usunalem parametr, bo nie jest portrzebny
         { //Tabela wynikow pokazuje aktualna ilosc wygranych druzyn, poniewaz ilosc wygranych sie zeruje w polfinale, bedzie trzeba w interfejsie robic jej kopie albo cos
             SortujListeDruzyn();
